@@ -4,7 +4,7 @@ var templates = require("../../build/templates");
 
 var UsesHogan = {
 
-    templateAdapter: require("hogan-brisket")(templates)
+    templateAdapter: require("hogan-brisket")(templates.templates)
 
 };
 
