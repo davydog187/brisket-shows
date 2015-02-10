@@ -4,15 +4,20 @@ var express = require('express');
 var Brisket = require('brisket');
 
 var PORT = process.env.PORT || 8080;
+
 var SHOW_DATA = {
-    'test': {
-        name: 'Green Bean Casserole',
-        url: 'http://www.rpfit.com/wp-content/uploads/2012/05/green-bean-casserole.jpg'
+    'game-of-thrones': {
+        name: 'Game of Thrones!',
+        url: "http://i0.wp.com/cdn.bgr.com/2014/03/game-of-thrones.jpg?w=625"
     },
-    'polenta': {
-        name: 'Polenta',
-        url: 'http://www.mezzetta.com/uploads/recipes/MZ_RecipeImage_Creamy_Polenta.png'
+    'walking-dead': {
+        name: 'The Walking Dead',
+        url: "http://upload.wikimedia.org/wikipedia/en/1/17/The_Walking_Dead_title_card.jpg"
+    },
+    'shameless': {
+        name: "Shameless!"
     }
+
 };
 
 var app = express()
@@ -43,12 +48,12 @@ var app = express()
         // add properties here that you want to expose to ServerApp
         //  and ClientApp
         environmentConfig: {
-            favoriteTown: 'Brisket Town'
+            favoriteFood: 'Brisket'
         },
 
         // add properties that you only want to expose to the ServerApp
         serverConfig: {
-            favoriteServer: 'a plate'
+            favoriteServerSide: 'a plate'
         },
 
         onRouteHandled: function(options) {

@@ -12,8 +12,8 @@ var ServerApp = Brisket.ServerApp.extend({
         var serverConfig = options.serverConfig;
 
         // do server-only app set up here
-        console.log('My favorite town is ' + environmentConfig.favoriteTown);
-        console.log('My favorite server is ' + serverConfig.favoriteServer);
+        console.log('My food is ' + environmentConfig.favoriteFood);
+        console.log('My favorite server side ' + serverConfig.favoriteServerSide);
         console.log('ServerApp has started');
     }
 
