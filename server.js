@@ -4,8 +4,8 @@ var express = require('express');
 var Brisket = require('brisket');
 
 var PORT = process.env.PORT || 8080;
-var SIDE_DATA = {
-    'green-bean-casserole': {
+var SHOW_DATA = {
+    'test': {
         name: 'Green Bean Casserole',
         url: 'http://www.rpfit.com/wp-content/uploads/2012/05/green-bean-casserole.jpg'
     },
@@ -21,14 +21,14 @@ var app = express()
 
     .use('/api', express.Router()
 
-        .get('/side/:type', function(request, response) {
-            var side = SIDE_DATA[request.params.type];
+        .get('/shows/:type', function(request, response) {
+            var show = SHOW_DATA[request.params.type];
 
-            if (!side) {
-                response.status(404).json({ missing: 'side' });
+            if (!show) {
+                response.status(404).json({ missing: 'show' });
             }
 
-            response.json(side);
+            response.json(show);
         })
 
     )

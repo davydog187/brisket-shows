@@ -3,7 +3,7 @@
 var BaseView = require('../base/BaseView');
 
 var PageNotFoundView = BaseView.extend({
-    template: '<h1 style="color: #C00;">404 - Page Not Found</h1>'
+    template: "errors/404"
 });
 
 module.exports = PageNotFoundView;

@@ -2,6 +2,7 @@
 
 function configureGrunt(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
+    grunt.loadNpmTasks('grunt-hogan');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks("grunt-concurrent");
@@ -12,7 +13,8 @@ function configureGrunt(grunt) {
         browserify: {
             build: {
                 src: [
-                    './app/javascripts/**/*.js'
+                    './app/javascripts/**/*.js',
+                    './app/build/templates.js'
                 ],
                 dest: './public/javascripts/application.js',
                 options: {
@@ -38,9 +40,26 @@ function configureGrunt(grunt) {
 
         },
 
+        hogan: {
+            compile: {
+                src: [
+                    "app/templates/**/*.html",
+                ],
+                dest: "app/build/templates.js",
+                options: {
+                    binderName: "nodejs",
+                    nameFunc: stripPathAndExtension,
+                    exposeTemplates: true
+                }
+            }
+        },
+
         clean: {
             js: [
                 'public/javascripts',
+            ],
+            html: [
+                "app/build/templates.js"
             ]
         },
 
@@ -84,6 +103,8 @@ function configureGrunt(grunt) {
 
     grunt.registerTask('build', [
         'clean:js',
+        'clean:html',
+        'hogan:compile',
         'browserify:build'
     ]);
 
@@ -93,6 +114,10 @@ function configureGrunt(grunt) {
     ]);
 
     grunt.registerTask('default', ['server']);
+}
+
+function stripPathAndExtension(file) {
+    return file.replace("app/templates/", "").split(".")[0];
 }
 
 module.exports = configureGrunt;

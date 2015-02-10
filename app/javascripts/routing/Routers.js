@@ -10,7 +10,7 @@ var Routers = Brisket.Routers.toUse({
     // list all other routers here e.g. require('../example/ExampleRouter')
     routers: [
         require('../home/HomeRouter'),
-        require('../sides/SidesRouter')
+        require('../shows/ShowsRouter')
     ]
 
 });
