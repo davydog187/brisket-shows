@@ -11,7 +11,7 @@ var ClientApp = Brisket.ClientApp.extend({
         var environmentConfig = options.environmentConfig;
 
         // do client-only app set up here
-        console.log('My favorite town is ' + environmentConfig.favoriteTown);
+        console.log('My favorite food is ' + environmentConfig.favoriteFood);
         console.log('ClientApp has started');
     }
 
