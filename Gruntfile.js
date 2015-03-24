@@ -31,8 +31,7 @@ function configureGrunt(grunt) {
                         "./node_modules/brisket/lib/brisket.js:brisket"
                     ],
                     ignore: [
-                        "./app/javascripts/server/**/*.js",
-                        "./node_modules/brisket/lib/server/**/*.js"
+                        "./app/javascripts/server/**/*.js"
                     ],
                     transform: ["browserify-shim"]
                 }
