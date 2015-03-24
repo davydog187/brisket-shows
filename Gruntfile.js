@@ -28,7 +28,6 @@ function configureGrunt(grunt) {
                     },
                     alias: [
                         CLIENT_PATH + ":app/ClientApp",
-                        "./node_modules/brisket/node_modules/jquery/dist/jquery.js:jquery",
                         "./node_modules/brisket/lib/brisket.js:brisket"
                     ],
                     ignore: [
