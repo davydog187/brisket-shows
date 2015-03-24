@@ -1,5 +1,9 @@
 'use strict';
 
+var path = require("path");
+
+var CLIENT_PATH = path.resolve("./app/javascripts/client/ClientApp.js");
+
 function configureGrunt(grunt) {
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-hogan');
@@ -13,19 +17,23 @@ function configureGrunt(grunt) {
         browserify: {
             build: {
                 src: [
-                    './app/javascripts/**/*.js',
-                    './app/build/templates.js'
+                    "./app/javascripts/**/*.js",
+                    "./app/build/templates.js"
                 ],
                 dest: './public/javascripts/application.js',
                 options: {
+                    browserifyOptions: {
+                        debug: true,
+                        verbose: true
+                    },
                     alias: [
+                        CLIENT_PATH + ":app/ClientApp",
                         "./node_modules/brisket/node_modules/jquery/dist/jquery.js:jquery",
-                        './node_modules/brisket/lib/brisket.js:brisket',
-                        './app/javascripts/client/ClientApp.js:app/ClientApp'
+                        "./node_modules/brisket/lib/brisket.js:brisket"
                     ],
                     ignore: [
-                        './app/javascripts/server/**/*.js',
-                        './node_modules/brisket/lib/server/**/*.js'
+                        "./app/javascripts/server/**/*.js",
+                        "./node_modules/brisket/lib/server/**/*.js"
                     ],
                     transform: ["browserify-shim"]
                 }
