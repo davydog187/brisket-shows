@@ -19,6 +19,7 @@ function configureGrunt(grunt) {
                 dest: './public/javascripts/application.js',
                 options: {
                     alias: [
+                        "./node_modules/brisket/node_modules/jquery/dist/jquery.js:jquery",
                         './node_modules/brisket/lib/brisket.js:brisket',
                         './app/javascripts/client/ClientApp.js:app/ClientApp'
                     ],
@@ -26,15 +27,7 @@ function configureGrunt(grunt) {
                         './app/javascripts/server/**/*.js',
                         './node_modules/brisket/lib/server/**/*.js'
                     ],
-                    shim: {
-                        'jquery-mockjax': {
-                            path: 'node_modules/brisket/node_modules/jquery-mockjax/jquery.mockjax.js',
-                            exports: null,
-                            depends: {
-                                jquery: 'jQuery'
-                            }
-                        }
-                    }
+                    transform: ["browserify-shim"]
                 }
             }
 
